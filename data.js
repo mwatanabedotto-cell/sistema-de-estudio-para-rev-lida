@@ -46,7 +46,7 @@ const F = {
 const TEMAS = [
   // ── Clínica Médica ─────────────────────────────────────────
   { id: "cm-has", area: "cm", nivel: 1, nome: "Hipertensão arterial sistêmica",
-    resumo: "Diagnóstico com medidas repetidas (≥140/90 mmHg no consultório, ou MAPA/MRPA), estratificação de risco cardiovascular e lesão de órgão-alvo. Tratamento: mudança de estilo de vida + IECA/BRA, tiazídico ou BCC; associação precoce no estágio 2. Diferencie urgência de emergência hipertensiva.",
+    resumo: "Diretriz Brasileira de 2025: PA normal abaixo de 120/80, pré-hipertensão de 120–139/80–89 e HAS a partir de 140/90 mmHg em medidas repetidas (ou MAPA/MRPA). Meta de tratamento abaixo de 130/80 mmHg para todos, se tolerada. Mudança de estilo de vida desde 120/80; drogas: IECA/BRA, tiazídico ou BCC, com associação precoce. Diferencie urgência de emergência hipertensiva.",
     fontes: [F.sbc, F.cab, F.livroCM], busca: "hipertensão arterial revalida aula" },
   { id: "cm-dm", area: "cm", nivel: 1, nome: "Diabetes mellitus",
     resumo: "Critérios: glicemia de jejum ≥126, HbA1c ≥6,5%, TOTG 2h ≥200 ou glicemia casual ≥200 com sintomas. Metformina é a primeira linha no DM2; insulinização quando HbA1c muito alta ou catabolismo. Rastreio de complicações (retina, rim, pé) e manejo de CAD e estado hiperosmolar.",
@@ -157,7 +157,7 @@ const TEMAS = [
     resumo: "Períodos clínicos do parto, partograma (linhas de alerta e ação), mecanismo de parto e boas práticas (posição livre, clampeamento oportuno do cordão). Indicações reais de cesárea e de fórceps.",
     fontes: [F.febrasgo, F.livroGO], busca: "partograma assistência ao parto revalida" },
   { id: "go-rastreio", area: "go", nivel: 1, nome: "Rastreio de câncer de colo e de mama",
-    resumo: "Colo: citologia de 25 a 64 anos, a cada 3 anos após dois exames anuais normais (com transição para teste de DNA-HPV). Condutas por resultado (ASC-US, LSIL, HSIL). Mama: mamografia bienal de 50 a 69 anos como faixa prioritária no SUS (o Ministério ampliou o acesso a outras idades em 2025; confira a norma vigente); BI-RADS e condutas.",
+    resumo: "Colo: citologia de 25 a 64 anos, a cada 3 anos após dois exames anuais normais (com transição para teste de DNA-HPV). Condutas por resultado (ASC-US, LSIL, HSIL). Mama (Nota Técnica MS 626/2025): rastreamento ativo com mamografia a cada 2 anos dos 50 aos 74 anos; dos 40 aos 49 anos, sob demanda e com decisão compartilhada; acima de 74, individualizar. BI-RADS e condutas.",
     fontes: [F.cab, F.febrasgo], busca: "rastreio câncer colo útero mama revalida" },
   { id: "go-ist", area: "go", nivel: 2, nome: "IST e vulvovaginites",
     resumo: "Abordagem sindrômica: corrimento (candidíase, vaginose, tricomoníase), úlcera genital e doença inflamatória pélvica. Cervicite por clamídia e gonococo: ceftriaxona + azitromicina. Tratamento da parceria.",
@@ -319,9 +319,9 @@ const TEMAS = [
 
 // Calendário de provas. tipo: "confirmada" (data oficial divulgada) ou "estimativa".
 const PROVAS_PADRAO = [
-  { id: "p-2026-1-e1", edicao: "Revalida 2026.1", etapa: "1ª etapa (teórica)", data: "2026-06-07", tipo: "confirmada", obs: "Prova objetiva + discursiva. Nota de corte: 59 pontos." },
+  { id: "p-2026-1-e1", edicao: "Revalida 2026.1", etapa: "1ª etapa (teórica)", data: "2026-06-07", tipo: "confirmada", obs: "Prova objetiva. Nota de corte: 59 pontos. Pela Portaria 773/2025, a escrita técnica passou para a 2ª etapa." },
   { id: "p-2026-2-e1", edicao: "Revalida 2026.2", etapa: "1ª etapa (teórica)", data: "2026-09-13", tipo: "confirmada", obs: "100 questões objetivas, mesmas do Enamed 2026. Resultado definitivo previsto para 04/12/2026." },
-  { id: "p-2026-1-e2", edicao: "Revalida 2026.1", etapa: "2ª etapa (habilidades clínicas)", data: "2026-12-05", tipo: "estimativa", obs: "Estimativa. Aguarde o edital da 2ª etapa no site do INEP." },
+  { id: "p-2026-1-e2", edicao: "Revalida 2026.1", etapa: "2ª etapa (habilidades clínicas)", data: "2026-12-05", tipo: "estimativa", obs: "Estimativa. Aguarde o edital da 2ª etapa no site do INEP. São 10 estações de simulação clínica, que agora incluem a escrita técnica." },
   { id: "p-2026-2-e2", edicao: "Revalida 2026.2", etapa: "2ª etapa (habilidades clínicas)", data: "2027-05-15", tipo: "estimativa", obs: "Estimativa baseada na 2ª etapa da edição 2025.2 (16 e 17/05/2026)." },
   { id: "p-2027-1-e1", edicao: "Revalida 2027.1", etapa: "1ª etapa (teórica)", data: "2027-06-06", tipo: "estimativa", obs: "Estimativa baseada na edição 2026.1 (07/06/2026)." },
   { id: "p-2027-2-e1", edicao: "Revalida 2027.2", etapa: "1ª etapa (teórica)", data: "2027-09-12", tipo: "estimativa", obs: "Estimativa baseada na edição 2026.2, aplicada junto com o Enamed." },

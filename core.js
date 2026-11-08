@@ -47,11 +47,13 @@ function estadoNovo() {
     timer: null, simTimer: null, cfg: { ...CFG_PADRAO }, atualizadoEm: 0, syncBase: 0,
   };
 }
+const temaNovo = () => ({ aula: false, leitura: false, questoes: false, inicio: null, prox: null, revisoes: [], qFeitas: 0, qAcertos: 0, notas: "", minutos: 0, incid: {} });
 // Completa campos que versões antigas não tinham (também usado ao restaurar backup e ao baixar da nuvem).
 function normalizar(s) {
   const base = estadoNovo();
   for (const k of Object.keys(base)) if (s[k] === undefined) s[k] = base[k];
   s.cfg = { ...CFG_PADRAO, ...s.cfg };
+  for (const id of Object.keys(s.temas)) s.temas[id] = { ...temaNovo(), ...s.temas[id] };
   for (const p of PROVAS_PADRAO) {
     if (!s.provas.some((x) => x.id === p.id) && !s.removidas.includes(p.id)) s.provas.push({ ...p });
   }
@@ -72,7 +74,7 @@ function salvar(opts = {}) {
 }
 function substituirEstado(novo) { S = normalizar(novo); }
 
-const T = (id) => (S.temas[id] ||= { aula: false, leitura: false, questoes: false, inicio: null, prox: null, revisoes: [], qFeitas: 0, qAcertos: 0, notas: "", minutos: 0, incid: {} });
+const T = (id) => (S.temas[id] ||= temaNovo());
 const temaInfo = (id) => TEMAS.find((t) => t.id === id);
 const area = (id) => AREAS.find((a) => a.id === id);
 const opcoesTemas = (sel) => AREAS.map((a) => `<optgroup label="${a.nome}">${TEMAS.filter((t) => t.area === a.id)

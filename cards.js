@@ -4,7 +4,8 @@
 const CARDS = [
   // Clínica Médica
   { id: "c-has-1", tema: "cm-has", f: "Emergência hipertensiva × urgência hipertensiva", v: "Emergência: PA muito elevada com lesão aguda de órgão-alvo; redução imediata com droga IV. Urgência: PA elevada sem lesão aguda; redução gradual em 24–48 h com droga oral." },
-  { id: "c-has-2", tema: "cm-has", f: "Meta pressórica geral na HAS", v: "Abaixo de 140/90 mmHg; abaixo de 130/80 mmHg nos pacientes de alto risco cardiovascular, se tolerado." },
+  { id: "c-has-2", tema: "cm-has", f: "Meta pressórica na HAS (Diretriz Brasileira 2025)", v: "Abaixo de 130/80 mmHg para todos os hipertensos, se tolerado. A diretriz de 2020 usava abaixo de 140/90 para a maioria." },
+  { id: "c-has-3", tema: "cm-has", f: "Classificação da PA no consultório (Diretriz Brasileira 2025)", v: "Normal: abaixo de 120/80. Pré-hipertensão: 120–139 e/ou 80–89. Hipertensão: 140/90 ou mais." },
   { id: "c-dm-1", tema: "cm-dm", f: "Critérios diagnósticos de diabetes", v: "Glicemia de jejum ≥126 mg/dL, HbA1c ≥6,5%, glicemia 2 h após TOTG ≥200 mg/dL ou glicemia casual ≥200 mg/dL com sintomas. Sem sintomas, confirmar com segundo exame." },
   { id: "c-dm-2", tema: "cm-dm", f: "Tratamento inicial da cetoacidose diabética", v: "Hidratação com SF 0,9%, reposição de potássio e insulina regular IV quando K ≥3,3 mEq/L. Bicarbonato só se pH <6,9." },
   { id: "c-dm-3", tema: "cm-dm", f: "Meta de HbA1c para a maioria dos adultos com DM", v: "Abaixo de 7%, individualizando em idosos frágeis e em quem tem risco de hipoglicemia." },
@@ -83,7 +84,8 @@ const CARDS = [
   { id: "c-hem-1", tema: "go-hemorragia", f: "Os 4 Ts da hemorragia pós-parto", v: "Tônus (atonia, a causa mais comum), Trauma, Tecido (restos placentários) e Trombina (coagulopatia)." },
   { id: "c-hem-2", tema: "go-hemorragia", f: "Ácido tranexâmico na HPP", v: "1 g IV em 10 min, nas primeiras 3 h. Repetir 1 g se o sangramento persistir após 30 min." },
   { id: "c-hem-3", tema: "go-hemorragia", f: "Placenta prévia × descolamento prematuro de placenta", v: "Prévia: sangramento vermelho vivo, indolor, útero relaxado. DPP: dor, hipertonia uterina, sangue escuro, sofrimento fetal; associado à hipertensão." },
-  { id: "c-ras-1", tema: "go-rastreio", f: "Rastreio citológico do câncer de colo no Brasil", v: "Dos 25 aos 64 anos em quem já teve atividade sexual. Após 2 exames anuais normais, a cada 3 anos." },
+  { id: "c-ras-1", tema: "go-rastreio", f: "Rastreio citológico do câncer de colo no Brasil", v: "Dos 25 aos 64 anos em quem já teve atividade sexual. Após 2 exames anuais normais, a cada 3 anos. Com o teste de DNA-HPV, o intervalo passa a 5 anos." },
+  { id: "c-ras-2", tema: "go-rastreio", f: "Mamografia no SUS (Nota Técnica 626/2025)", v: "Rastreamento ativo a cada 2 anos dos 50 aos 74 anos. Dos 40 aos 49, sob demanda com decisão compartilhada. Acima de 74, avaliar caso a caso." },
   { id: "c-dmg-1", tema: "go-dmg", f: "Pontos de corte do TOTG 75 g no diabetes gestacional", v: "Jejum ≥92, 1 h ≥180, 2 h ≥153 mg/dL. Um valor alterado já confirma." },
   { id: "c-con-1", tema: "go-contra", f: "Exemplos de categoria 4 para contraceptivo com estrogênio", v: "Enxaqueca com aura, tabagismo ≥15 cigarros/dia com 35 anos ou mais, PA ≥160/100, TEV atual ou prévio, trombofilia conhecida, câncer de mama atual, menos de 21 dias pós-parto." },
   { id: "c-tpp-1", tema: "go-tpp", f: "Corticoide antenatal", v: "Betametasona 12 mg IM, 2 doses com 24 h de intervalo, entre 24 e 34 semanas." },

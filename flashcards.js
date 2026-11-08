@@ -45,7 +45,7 @@ function avaliar(id, nota) {
   if (novo) { novosHoje(); S.cardsHoje.novos++; }
   registrar(XP.card);
 }
-const rotuloInt = (n) => (n === 1 ? "1 dia" : n < 30 ? `${n} dias` : `${Math.round(n / 30)} m`);
+const rotuloInt = (n) => { if (n < 30) return n === 1 ? "1 dia" : `${n} dias`; const m = Math.round(n / 30); return m === 1 ? "1 mês" : `${m} meses`; };
 
 VIEWS.flashcards = function renderFlashcards() {
   const { vencidos, novos } = filaCards();

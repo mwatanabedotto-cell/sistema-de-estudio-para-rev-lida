@@ -176,7 +176,7 @@ ACOES["sim-pausar"] = () => {
 };
 ACOES["sim-encerrar"] = () => {
   const t = S.simTimer;
-  const usado = Math.round(((t.pausadoEm || Date.now()) - t.inicio - (t.pausas || 0)) / 60000);
+  const usado = Math.min(t.duracaoMin, Math.round(((t.pausadoEm || Date.now()) - t.inicio - (t.pausas || 0)) / 60000));
   S.simTimer = null;
   creditarMinutos(usado, null);
   salvar(); render();

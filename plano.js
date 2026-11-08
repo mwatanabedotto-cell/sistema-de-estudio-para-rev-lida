@@ -55,7 +55,7 @@ function gerarPlano() {
     for (const t of fila) {
       const st = S.temas[t.id];
       const min = st.revisoes.length >= INTERVALOS.length ? DUR.manutencao : DUR.revisao;
-      if (!cabe(dia, min) && dia.itens.length) { transbordo.push(t); continue; }
+      if (!cabe(dia, min) && (dia.itens.length || !dia.capacidade)) { transbordo.push(t); continue; }
       const atrasada = diff(dia.data, st.prox) < 0;
       add(dia, { tipo: "revisao", titulo: `${rotuloRevisao(st)}: ${t.nome}`, sub: `${area(t.area).nome}${atrasada ? " · remanejada" : ""}`, min, tema: t.id });
     }
@@ -63,6 +63,7 @@ function gerarPlano() {
 
   // 2. Erros do caderno e 3. flashcards vencidos em cada dia.
   for (const dia of dias) {
+    if (!dia.capacidade && dia.data !== h) continue; // dia de descanso
     const nErros = S.erros.filter((e) => !e.resolvido && e.prox && (dia.data === h ? diff(h, e.prox) <= 0 : e.prox === dia.data)).length;
     if (nErros) add(dia, { tipo: "erros", titulo: `Revisar ${plural(nErros, "erro", "erros")} do caderno`, sub: "Tente lembrar antes de abrir a resposta", min: Math.max(10, Math.round(nErros * DUR.erro)) });
     const vencidos = todosCards().filter((c) => { const p = S.cards[c.id]?.prox; return p && (dia.data === h ? diff(h, p) <= 0 : p === dia.data); }).length;
@@ -89,7 +90,7 @@ function gerarPlano() {
   dias.forEach((dia, i) => {
     if (dia.itens.some((x) => x.tipo === "simulado")) return;
     const cont = andamento.shift();
-    if (cont && cabe(dia, DUR.continuar)) {
+    if (cont && cabe(dia, DUR.continuar) && !dia.itens.some((x) => x.tema === cont.id)) {
       const falta = ETAPAS.filter((e) => !S.temas[cont.id][e.k]).map((e) => e.k === "aula" ? "aula" : e.k === "leitura" ? "resumo" : "questões").join(", ");
       add(dia, { tipo: "continuar", titulo: `Continuar: ${cont.nome}`, sub: `Falta: ${falta}`, min: DUR.continuar, tema: cont.id });
     } else if (cont) andamento.unshift(cont);

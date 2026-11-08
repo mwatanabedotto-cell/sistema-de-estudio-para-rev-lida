@@ -1,9 +1,8 @@
 // Painel: contagem regressiva, meta diária, cronômetro Pomodoro, sequência e resumo do dia.
 
-function creditarMinutos(min, temaId) {
+function creditarMinutos(min, temaId, d = hoje()) {
   min = Math.round(min);
   if (!(min > 0)) return;
-  const d = hoje();
   S.minutos[d] = (S.minutos[d] || 0) + min;
   if (temaId) T(temaId).minutos += min;
   registrar(Math.max(1, Math.round(min / 5)));
@@ -38,7 +37,7 @@ TICKS.push(() => {
   if (!t) { mini.hidden = true; return; }
   if (t.fim && Date.now() >= t.fim) {
     if (t.fase === "foco") {
-      creditarMinutos(t.durMin, t.tema);
+      creditarMinutos(t.durMin, t.tema, iso(new Date(t.fim))); // se o app ficou fechado, conta no dia em que o foco terminou
       S.timer = { fase: "pausa", durMin: S.cfg.pausa, fim: Date.now() + S.cfg.pausa * 60000, restante: 0, tema: t.tema };
       notificar("Foco concluído", `${fmtMin(t.durMin)} somados à sua meta. Hora da pausa de ${S.cfg.pausa} min.`);
     } else {
