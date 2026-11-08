@@ -62,7 +62,7 @@ ACOES["prova-remover"] = (el) => {
 };
 ENVIOS["form-prova"] = () => {
   const id = $("#p-id").value || uid("p");
-  const dados = { id, edicao: $("#p-edicao").value.trim(), etapa: $("#p-etapa").value, data: $("#p-data").value, tipo: $("#p-tipo").value, obs: $("#p-obs").value.trim() };
+  const dados = { id, edicao: $("#p-edicao").value.trim(), etapa: $("#p-etapa").value, data: $("#p-data").value, tipo: $("#p-tipo").value, obs: $("#p-obs").value.trim(), editada: true };
   const i = S.provas.findIndex((x) => x.id === id);
   if (i >= 0) S.provas[i] = dados; else S.provas.push(dados);
   salvar(); render(); toast("Data salva.");

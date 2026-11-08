@@ -55,7 +55,10 @@ function normalizar(s) {
   s.cfg = { ...CFG_PADRAO, ...s.cfg };
   for (const id of Object.keys(s.temas)) s.temas[id] = { ...temaNovo(), ...s.temas[id] };
   for (const p of PROVAS_PADRAO) {
-    if (!s.provas.some((x) => x.id === p.id) && !s.removidas.includes(p.id)) s.provas.push({ ...p });
+    // Datas padrão acompanham as atualizações do app, exceto as que a pessoa editou ou removeu.
+    const i = s.provas.findIndex((x) => x.id === p.id);
+    if (i >= 0) { if (!s.provas[i].editada) s.provas[i] = { ...p }; }
+    else if (!s.removidas.includes(p.id)) s.provas.push({ ...p });
   }
   return s;
 }
